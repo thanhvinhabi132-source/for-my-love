@@ -12,54 +12,55 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #000000; /* Nền đen hoàn toàn */
+            background-color: #000000; /* Nền đen tuyền */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
         }
 
         .container {
             position: relative;
-            width: 600px; /* Độ rộng khung chứa */
-            height: 600px;
+            width: 650px; /* Khung chứa vừa vặn */
+            height: 650px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* --- Trái Tim To Trắng Ngọc (Dùng SVG) --- */
+        /* --- Trái Tim To Trắng Ngọc (Đã thu nhỏ lại hài hòa) --- */
         .big-heart {
             position: absolute;
-            width: 100%;
+            width: 300px; /* Thu bé lại vừa phải */
             height: auto;
             opacity: 0.95;
-            /* Tạo hiệu ứng mờ ảo nhẹ cho màu trắng ngọc */
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
+            z-index: 1;
         }
 
-        /* --- 4 Trái Tim Nhỏ Chèn Ảnh --- */
+        /* --- 4 Trái Tim Ảnh (Đã phóng to lên) --- */
         .heart-photo {
             position: absolute;
-            width: 130px; /* Kích thước 4 trái tim nhỏ */
-            height: 130px;
+            width: 180px; /* To rõ ràng để thấy ảnh */
+            height: 180px;
             cursor: pointer;
-            transition: all 0.4s ease;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+            z-index: 2; /* Nổi lên trên trái tim trắng */
         }
 
         .heart-photo:hover {
             transform: scale(1.15) rotate(5deg);
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
+            z-index: 3;
         }
 
-        /* Định vị 4 trái tim nhỏ ở 4 góc */
+        /* Định vị 4 góc và đẩy rộng ra rìa một chút cho thoáng */
         .top-left { top: 0; left: 0; }
         .top-right { top: 0; right: 0; }
         .bottom-left { bottom: 0; left: 0; }
         .bottom-right { bottom: 0; right: 0; }
 
-        /* Ký tự trái tim trong SVG */
         .heart-shape {
-            fill: #ffffff; /* Trắng ngọc */
+            fill: #f5f5f7; /* Màu trắng ngọc mịn màng */
         }
 
     </style>
@@ -68,14 +69,12 @@
 
     <div class="container">
         
-        <!-- --- TRÁI TIM TO TRẮNG NGỌC --- -->
+        <!-- --- TRÁI TIM GIỮA --- -->
         <svg class="big-heart" viewBox="0 0 100 90">
             <path class="heart-shape" d="M92.71,7.279c-9.707-9.706-25.443-9.706-35.151,0L50,14.839l-7.559-7.56c-9.707-9.706-25.443-9.706-35.151,0c-9.707,9.707-9.707,25.444,0,35.151L50,89.96l42.71-47.53C102.417,32.723,102.417,16.986,92.71,7.279z"/>
         </svg>
 
-        <!-- --- 4 TRÁI TIM NHỎ ĐỂ CHÈN ẢNH --- -->
-        <!-- Bạn có thể thay đổi đường dẫn ảnh 'anh1.jpg',... ở đây -->
-        
+        <!-- --- 4 TRÁI TIM ẢNH XUNG QUANH --- -->
         <svg class="heart-photo top-left" viewBox="0 0 100 90">
             <defs>
                 <clipPath id="clipHeart1"><path d="M92.71,7.279c-9.707-9.706-25.443-9.706-35.151,0L50,14.839l-7.559-7.56c-9.707-9.706-25.443-9.706-35.151,0c-9.707,9.707-9.707,25.444,0,35.151L50,89.96l42.71-47.53C102.417,32.723,102.417,16.986,92.71,7.279z"/></clipPath>
