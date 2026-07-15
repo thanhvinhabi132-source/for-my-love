@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trái Tim Trắng Ngọc Gửi Người Thương</title>
+    <!-- Nhúng Google Fonts hỗ trợ tiếng Việt hoàn hảo, không lỗi dấu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
             margin: 0;
@@ -13,61 +18,61 @@
             justify-content: center;
             align-items: center;
             background-color: #000000; /* Nền đen tuyền */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Comfortaa', cursive, sans-serif;
             overflow: hidden;
         }
 
         .container {
             position: relative;
-            width: 720px; /* Khung chứa rộng rãi để không bị đè */
-            height: 720px;
+            width: 520px; /* Thu hẹp khung chứa để kéo 4 tim nhỏ sát lại */
+            height: 520px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* --- Trái Tim To Trắng Ngọc (Kích thước 500px - Gấp 5 lần tim nhỏ) --- */
+        /* --- Trái Tim To Trắng Ngọc (Thu bé lại thon gọn 380px) --- */
         .big-heart {
             position: absolute;
-            width: 500px; 
+            width: 380px; 
             height: auto;
             opacity: 0.95;
             cursor: pointer;
-            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.45));
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
             z-index: 1;
             transition: all 0.3s ease;
         }
 
         .big-heart:hover {
             transform: scale(1.03);
-            filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.7));
+            filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.65));
         }
 
-        /* --- 4 Trái Tim Ảnh (Kích thước 100px) --- */
+        /* --- 4 Trái Tim Ảnh (Gần lại ôm khít tim trắng) --- */
         .heart-photo {
             position: absolute;
             width: 100px; 
             height: 100px;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
-            z-index: 2; /* Nổi lên trên */
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.25));
+            z-index: 2;
         }
 
         .heart-photo:hover {
             transform: scale(1.2) rotate(5deg);
-            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5));
             z-index: 3;
         }
 
-        /* Định vị 4 góc thoáng hơn, không chạm vào tim to */
-        .top-left { top: 15px; left: 15px; }
-        .top-right { top: 15px; right: 15px; }
-        .bottom-left { bottom: 15px; left: 15px; }
-        .bottom-right { bottom: 15px; right: 15px; }
+        /* Tọa độ căn chỉnh ôm sát vào 4 góc vòng cung của tim trắng */
+        .top-left { top: 45px; left: 45px; }
+        .top-right { top: 45px; right: 45px; }
+        .bottom-left { bottom: 45px; left: 45px; }
+        .bottom-right { bottom: 45px; right: 45px; }
 
         .heart-shape {
-            fill: #f5f5f7; /* Màu trắng ngọc mịn màng */
+            fill: #f5f5f7; /* Màu trắng ngọc */
         }
 
         /* --- POPUP MẢNH GIẤY THƯ TAY --- */
@@ -77,14 +82,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.75); /* Làm mờ nền đằng sau */
+            background-color: rgba(0, 0, 0, 0.8); /* Làm mờ nền đen đằng sau sâu hơn */
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease;
         }
 
         .paper-overlay.active {
@@ -92,52 +97,52 @@
             pointer-events: auto;
         }
 
-        /* Thiết kế mảnh giấy vintage */
+        /* Thiết kế mảnh giấy vintage cao cấp */
         .paper {
-            background-color: #fdf6e2; /* Màu giấy thô cũ */
-            width: 450px;
-            min-height: 300px;
+            background-color: #fdf6e2; 
+            width: 460px;
+            min-height: 280px;
             padding: 40px;
-            border-radius: 4px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0,0,0,0.06);
             position: relative;
             transform: translateY(30px) rotate(-1deg);
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
+            border: 1px solid #e3dac1;
             
-            /* Tạo viền răng cưa nhẹ giống mảnh giấy xé */
-            border: 1px solid #e6dec9;
-            background-image: linear-gradient(#e1d9c4 1px, transparent 1px);
-            background-size: 100% 30px; /* Tạo dòng kẻ ngang giống trang vở */
-            line-height: 30px;
+            /* Dòng kẻ viết thư */
+            background-image: linear-gradient(#dfd6bc 1px, transparent 1px);
+            background-size: 100% 36px; 
+            line-height: 36px;
         }
 
         .paper-overlay.active .paper {
             transform: translateY(0) rotate(1deg);
         }
 
-        /* Nội dung bức thư */
+        /* Font chữ viết tay lãng mạn Việt Hóa 100% không lỗi dấu */
         .paper-content {
-            font-family: 'Georgia', serif;
-            font-size: 18px;
-            color: #4a3e2b;
-            font-style: italic;
-            white-space: pre-line; /* Giữ nguyên các hàng xuống dòng bạn viết */
-            margin-top: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 26px; /* Font này cỡ lớn chút nhìn sẽ rất đẹp */
+            color: #3d3121;
+            white-space: pre-line;
+            margin-top: 10px;
+            padding-bottom: 30px;
         }
 
         /* Nút đóng mảnh giấy */
         .close-btn {
             position: absolute;
-            bottom: 15px;
-            right: 20px;
+            bottom: 20px;
+            right: 25px;
             background: none;
             border: none;
-            font-family: 'Georgia', serif;
-            font-size: 16px;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 13px;
             color: #8c765c;
             cursor: pointer;
             font-weight: bold;
-            text-decoration: underline;
+            transition: color 0.2s ease;
         }
 
         .close-btn:hover {
@@ -192,7 +197,7 @@
             <div class="paper-content">
                 Dear em bé của anh,
 
-                Gặp được em là điều tuyệt vời nhất đối với anh.  
+                Gặp được em là điều tuyệt vời nhất đối với anh. Cảm ơn em đã luôn ở bên cạnh, cùng anh chia sẻ mọi niềm vui nỗi buồn. 
 
                 Yêu em rất nhiều! ❤️
             </div>
@@ -200,23 +205,23 @@
         </div>
     </div>
 
-    <!-- --- ĐOẠN CODE KÍCH HOẠT HIỆU ỨNG ẤN --- -->
+    <!-- --- HIỆU ỨNG TƯƠNG TÁC JS --- -->
     <script>
         const mainHeart = document.getElementById('mainHeart');
         const paperOverlay = document.getElementById('paperOverlay');
         const closeBtn = document.getElementById('closeBtn');
 
-        // Khi ấn vào trái tim trắng thì hiện mảnh giấy
+        // Mở thư
         mainHeart.addEventListener('click', () => {
             paperOverlay.classList.add('active');
         });
 
-        // Khi ấn nút gấp lại thì ẩn mảnh giấy đi
+        // Đóng thư
         closeBtn.addEventListener('click', () => {
             paperOverlay.classList.remove('active');
         });
 
-        // Ấn ra ngoài mảnh giấy cũng có thể đóng lại
+        // Click ra ngoài khoảng trống cũng đóng được thư
         paperOverlay.addEventListener('click', (e) => {
             if (e.target === paperOverlay) {
                 paperOverlay.classList.remove('active');
